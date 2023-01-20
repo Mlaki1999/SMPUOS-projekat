@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import userService from '../services/UserService';
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,11 @@ function RegisterForm() {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(formData);
+    const user={
+        username: formData.email,
+        password: formData.password
+    }
+    userService.register(user)
     // Perform registration logic here, such as making a POST request to an API
   };
 

@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 
 import LoginForm from '../src/components/LoginForm';
 import RegisterForm from '../src/components/RegisterForm';
+import Statistic from './components/Statistic';
 
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
         </Routes>
         <Routes>
             <Route path='/register' element={<RegisterForm />} />
+        </Routes>
+        <Routes>
+            <Route path='/statistics' element={<Statistic />} />
         </Routes>
       </Router>
       <ToastContainer />

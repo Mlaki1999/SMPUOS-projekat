@@ -1,11 +1,13 @@
 package com.example.skautSluzba.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,4 +30,8 @@ public class Player {
 
     @Column(name="id_scout")
     private Long scoutId;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Statistic> statistics;
 }

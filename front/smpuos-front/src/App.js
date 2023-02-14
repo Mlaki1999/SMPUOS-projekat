@@ -8,6 +8,8 @@ import LoginForm from '../src/components/LoginForm';
 import RegisterForm from '../src/components/RegisterForm';
 import Statistic from './components/Statistic';
 import StatisticFilter from './components/StatisticFilter';
+import HomePageUser from './components/HomePage';
+import CreateUser from "./components/CreateUser"
 
 
 function App() {
@@ -21,10 +23,16 @@ function App() {
             <Route path='/register' element={<RegisterForm />} />
         </Routes>
         <Routes>
+            <Route path='/register2' element={<CreateUser />} />
+        </Routes>
+        <Routes>
             <Route path='/statistics' element={<Statistic />} />
         </Routes>
         <Routes>
             <Route path='/statisticFilters' element={<StatisticFilter />} />
+        </Routes>
+        <Routes>
+          <Route path='/homePage' element={<HomePageUser/>} />
         </Routes>
       </Router>
       <ToastContainer />

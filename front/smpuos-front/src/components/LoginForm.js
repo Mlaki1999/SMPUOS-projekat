@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import userService from '../services/UserService';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
 
@@ -16,17 +19,23 @@ function LoginForm() {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(formData);
+    userService.login(formData).then(data => {
+      console.log(data);
+      localStorage.setItem("User", JSON.stringify(data.data));
+      navigate('/homePage');
+    });
     // Perform login logic here, such as making a POST request to an API
   };
 
   return (
+    <div className='reg'>
     <form onSubmit={handleSubmit}>
       <label>
         Email:
         <input
           type="email"
-          name="email"
-          value={formData.email}
+          name="username"
+          value={formData.username}
           onChange={handleChange}
           required
         />
@@ -45,6 +54,7 @@ function LoginForm() {
       <br />
       <button type="submit">Login</button>
     </form>
+    </div>
   );
 }
 

@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import LoginForm from '../src/components/LoginForm';
 import RegisterForm from '../src/components/RegisterForm';
 import Statistic from './components/Statistic';
+import StatisticFilter from './components/StatisticFilter';
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
         </Routes>
         <Routes>
             <Route path='/statistics' element={<Statistic />} />
+        </Routes>
+        <Routes>
+            <Route path='/statisticFilters' element={<StatisticFilter />} />
         </Routes>
       </Router>
       <ToastContainer />

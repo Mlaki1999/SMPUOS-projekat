@@ -4,6 +4,7 @@ import com.example.skautSluzba.model.User;
 import com.example.skautSluzba.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
@@ -13,13 +14,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public boolean createUser(String username, String password) {
-        if (userRepository.findByUsername(username).isPresent()) {
+    public boolean createUser(User user) {
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             return false;
         }
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
         userRepository.save(user);
         return true;
     }
@@ -30,5 +28,9 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+    public User getUserByUsernameAndPassword(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password);
     }
 }

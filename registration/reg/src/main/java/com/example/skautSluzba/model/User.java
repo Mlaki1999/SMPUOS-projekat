@@ -1,5 +1,6 @@
 package com.example.skautSluzba.model;
 
+import com.example.skautSluzba.enums.Role;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,15 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "role")
+    private Role role;
 
     public String getUsername() {
         return username;
@@ -30,5 +40,30 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-//getters and setters
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    //getters and setters
 }

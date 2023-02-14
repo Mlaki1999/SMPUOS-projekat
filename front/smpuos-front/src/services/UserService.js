@@ -4,7 +4,7 @@ import axios from 'axios'
 const userService ={
     login: (user) => {
         return axios.post(
-            'http://localhost:8081/auth/login',
+            'http://localhost:8081/auth/login2',
             user
         );
     },

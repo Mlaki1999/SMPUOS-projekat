@@ -24,6 +24,11 @@ const playerService ={
         return axios.get(
             `http://localhost:8085/players/${id}`
         );
+    },
+    getAll: () => {
+        return axios.get(
+            `http://localhost:8085/players`
+        );
     }
 };
 export default playerService;

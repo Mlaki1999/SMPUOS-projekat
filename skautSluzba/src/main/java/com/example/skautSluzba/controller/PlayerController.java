@@ -4,6 +4,9 @@ import com.example.skautSluzba.service.PlayerService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -33,5 +36,10 @@ public class PlayerController {
     @DeleteMapping("/{id}")
     public void deletePlayer(@PathVariable long id) {
         playerService.deletePlayer(id);
+    }
+
+    @GetMapping()
+    public List<Player> getPlayers() {
+        return playerService.getPlayers();
     }
 }

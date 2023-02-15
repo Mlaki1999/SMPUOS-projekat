@@ -4,6 +4,8 @@ import com.example.skautSluzba.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Service
 public class PlayerService {
 
@@ -20,6 +22,10 @@ public class PlayerService {
 
     public Player createPlayer(Player player) {
         return playerRepository.save(player);
+    }
+
+    public List<Player> getPlayers() {
+        return playerRepository.findAll();
     }
 
     public Player updatePlayer(long id, Player player) {

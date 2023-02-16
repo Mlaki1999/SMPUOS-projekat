@@ -136,40 +136,40 @@ import statisticService from '../services/StatisticService';
 import { useEffect  } from 'react';
 import { useParams } from 'react-router-dom';
 
-const StatisticList = ({   onStatisticEdit }) => {
+const StatisticListForFilters = ({ statisticsFiltered,  onStatisticEdit }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [statistics, setStatistics] = useState([]);
+  const [statistics, setStatistics] = useState(statisticsFiltered);
   const [statisticForUpdate, setStatisticForUpdate] = useState(null);
-  const { playerId } = useParams();
-  // console.log(playerId)
+  console.log(statistics)
+  // const { playerId } = useParams();
+  // // console.log(playerId)
 
-    useEffect(()=>{
+  //   useEffect(()=>{
       
-      // statisticService.getAll().then(data=>{
-      //   console.log(data);
-      //   setStatistics(data.data);
-      // })
-      statisticService.getByPlayer(playerId).then(data=>{
-        console.log(data);
-        setStatistics(data.data);
-      })
-    }, [playerId])
+  //     // statisticService.getAll().then(data=>{
+  //     //   console.log(data);
+  //     //   setStatistics(data.data);
+  //     // })
+  //     statisticService.getByPlayer(playerId).then(data=>{
+  //       console.log(data);
+  //       setStatistics(data.data);
+  //     })
+  //   }, [playerId])
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredStatistics = statistics.filter((statistic) =>
+  const filteredStatistics = statisticsFiltered.filter((statistic) =>
     statistic.season.toLowerCase().includes(searchTerm.toLowerCase()) ||
     statistic.club.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleAdd = async(statistic) => {
-    const response = await statisticService.create(statistic)
+  const handleAdd = (statistic) => {
+    statisticService.create(statistic)
     // onStatisticAdd(statistic);
-    setStatistics([...statistics, response.data])
     setShowAddModal(false);
   };
 
@@ -201,7 +201,6 @@ const StatisticList = ({   onStatisticEdit }) => {
       {showAddModal && (
         <AddStatisticModal
           onAdd={handleAdd}
-          playerId={playerId}
           onCancel={() => setShowAddModal(false)}
         />
       )}
@@ -216,4 +215,4 @@ const StatisticList = ({   onStatisticEdit }) => {
   );
 };
 
-export default StatisticList;
+export default StatisticListForFilters;

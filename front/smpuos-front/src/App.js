@@ -12,6 +12,8 @@ import HomePageUser from './components/HomePage';
 import CreateUser from "./components/CreateUser"
 import PlayerList from './components/PlayerList';
 import StatisticsList from './components/StatisticsList';
+import StatisticListForFilters from './components/StatisticsListForFilters';
+import StatisticsFilter from './components/StatisticsFilter';
 
 
 function App() {
@@ -41,6 +43,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/statisticsAll' element={<StatisticsList/>} />
+        </Routes>
+        <Routes>
+            <Route path='/generate' element={<StatisticsFilter />} />
         </Routes>
         <Routes>
         <Route path="/statistics/:playerId" element={<StatisticsList />} />

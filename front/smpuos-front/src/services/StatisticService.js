@@ -33,6 +33,12 @@ const statisticService ={
         return axios.get(
             `http://localhost:8085/statistics/players/${id}/statistics`
         );
+    },
+    report: (statistics) => {
+        return axios.post(
+            `http://localhost:8089/generating/ab`,
+            statistics
+        );
     }
 };
 export default statisticService;

@@ -11,6 +11,7 @@ import StatisticFilter from './components/StatisticFilter';
 import HomePageUser from './components/HomePage';
 import CreateUser from "./components/CreateUser"
 import PlayerList from './components/PlayerList';
+import StatisticsList from './components/StatisticsList';
 
 
 function App() {
@@ -37,6 +38,12 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/players' element={<PlayerList/>} />
+        </Routes>
+        <Routes>
+          <Route path='/statisticsAll' element={<StatisticsList/>} />
+        </Routes>
+        <Routes>
+        <Route path="/statistics/:playerId" element={<StatisticsList />} />
         </Routes>
       </Router>
       <ToastContainer />

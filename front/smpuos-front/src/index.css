@@ -382,3 +382,163 @@ select {
   background-color: #00b300;
 }
 
+
+/* statistic below */
+
+
+.statistic-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+/* PlayerCard styles */
+.statistic-card {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.statistic-card:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.statistic-card h2 {
+  margin-top: 0;
+}
+
+.statistic-card .stats {
+  margin-top: 10px;
+}
+
+.statistic-card .edit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #0074d9;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.statistic-card .edit-btn:hover {
+    background-color: #0d5d91;
+}
+
+
+.statistic-card .delete-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff4136;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.statistic-card .delete-btn:hover {
+    background-color: #d40f0a;
+}
+
+
+
+.add-statistic-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.add-statistic-modal .modal-content {
+  background-color: #ffffff;
+  width: 30rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.add-statistic-modal-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.add-statistic-modal-content label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-statistic-modal input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.add-statistic-modal select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.add-statistic-modal button {
+  padding: 10px;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-statistic-modal button:hover {
+  background-color: #0d8ce8;
+}
+
+.add-statistic-modal .error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.add-player-modal-container {
+  max-height: 700px;
+  overflow-y: auto;
+}
+

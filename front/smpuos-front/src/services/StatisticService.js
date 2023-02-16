@@ -28,6 +28,11 @@ const statisticService ={
         return axios.get(
             `http://localhost:8085/statistics`
         );
+    },
+    getByPlayer: (id) => {
+        return axios.get(
+            `http://localhost:8085/statistics/players/${id}/statistics`
+        );
     }
 };
 export default statisticService;

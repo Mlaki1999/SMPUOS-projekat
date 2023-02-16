@@ -128,7 +128,11 @@ public class Statistic {
     }
 
     private void updateFieldGoalPercentage(){
-        this.fieldGoalPercentage = (double)(numberOfSuccessfulShotsFor2Points+numberOfSuccessfulShotsFor3Points)/(numberOfAttemptedShotsFor2Points+numberOfAttemptedShotsFor3Points);
+        if((numberOfAttemptedShotsFor2Points+numberOfAttemptedShotsFor3Points)!=0){
+            this.fieldGoalPercentage = (double)(numberOfSuccessfulShotsFor2Points+numberOfSuccessfulShotsFor3Points)/(numberOfAttemptedShotsFor2Points+numberOfAttemptedShotsFor3Points);
+        }else{
+            this.fieldGoalPercentage = 0.0;
+        }
     }
 
     public void calculateAveragesPerGame(){

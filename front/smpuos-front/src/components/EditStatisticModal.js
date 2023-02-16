@@ -20,8 +20,8 @@ function EditStatisticModal({ statisticForUpdate, setShowEditModal, updateStatis
     player:{
       id:1
     },
-    offensiveRebounds: 0,
-    defensiveRebounds: 0,
+    offensiveRebounds: statisticForUpdate.offensiveRebounds ?? "",
+    defensiveRebounds: statisticForUpdate.defensiveRebounds ?? "",
     games: [],
   });
 

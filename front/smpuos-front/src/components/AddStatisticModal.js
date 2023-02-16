@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd }) {
+function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd, playerId }) {
   const [newStatistic, setNewStatistic] = useState({
     season: "",
     club: "",
@@ -17,7 +17,7 @@ function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd }) {
     numberOfSuccessfulFreeThrows: 0,
     numberOfAttemptedFreeThrows: 0,
     player:{
-      id:1
+      id:playerId
     },
     offensiveRebounds: 0,
     defensiveRebounds: 0,
@@ -28,11 +28,11 @@ function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd }) {
     setNewStatistic((prevStat) => ({ ...prevStat, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addStatistic(newStatistic);
-    setShowAddModal(false);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   addStatistic(newStatistic);
+  //   setShowAddModal(false);
+  // };
 
   const handleAddClick = () => {
     onAdd(newStatistic);

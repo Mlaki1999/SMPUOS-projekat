@@ -17,6 +17,10 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String season;
+
+    private String club;
+
     private Integer numberOfGames;
     private Integer numberOfSuccessfulShotsFor2Points;
     private Integer numberOfAttemptedShotsFor2Points;

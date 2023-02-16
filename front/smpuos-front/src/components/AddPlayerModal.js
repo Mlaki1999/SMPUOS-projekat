@@ -15,8 +15,6 @@ function AddPlayerModal({ onClose, onAdd, setPlayers, players }) {
       // stats: stats
     };
     onAdd(newPlayer);
-    const updatedPlayers = [...players, newPlayer];
-    setPlayers(updatedPlayers);
     onClose();
   };
 

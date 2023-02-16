@@ -26,6 +26,10 @@ public class StatisticService {
         return statisticRepository.findById(id).orElse(null);
     }
 
+
+    public List<Statistic> getStatisticsByPlayerId(Long playerId) {
+        return statisticRepository.findByPlayerId(playerId);
+    }
     public List<Statistic> getAllStatistics() {
         return statisticRepository.findAll();
     }

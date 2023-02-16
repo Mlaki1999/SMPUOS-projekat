@@ -48,4 +48,9 @@ public class StatisticController {
         return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
+    @GetMapping("/players/{playerId}/statistics")
+    public List<Statistic> getStatisticsByPlayerId(@PathVariable Long playerId) {
+        return statisticService.getStatisticsByPlayerId(playerId);
+    }
+
 }

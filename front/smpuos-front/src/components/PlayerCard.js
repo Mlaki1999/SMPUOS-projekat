@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function PlayerCard({ player, onEdit, onDelete }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -23,6 +24,7 @@ export default function PlayerCard({ player, onEdit, onDelete }) {
           </ul> */}
           <button onClick={onEdit}>Edit</button>
           <button onClick={handleDelete}>Delete</button>
+          <Link to={`/statistics/${player.id}`}>View Statistics</Link>
         </div>
       )}
     </div>

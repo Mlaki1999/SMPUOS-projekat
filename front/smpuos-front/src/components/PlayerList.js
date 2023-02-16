@@ -5,6 +5,7 @@ import AddPlayerModal from "./AddPlayerModal";
 import EditPlayerModal from "./EditPlayerModal";
 import AddPlayerModal2 from "./AddPlayerModal2";
 import EditPlayerModal2 from "./EditPlayerModal2";
+import { render } from "@testing-library/react";
 
 export default function PlayerList({  onEdit }) {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -20,9 +21,11 @@ export default function PlayerList({  onEdit }) {
     })
   }, [])
 
-  const handleAdd = (player) => {
-    playerService.create(player);
-    // setShowAddModal(true);
+  const handleAdd =async (player) => {
+    
+    const response= await playerService.create(player);
+    const newPlayer=await response.data;
+    setPlayers([...players,newPlayer])
   };
 
   const handleEdit = (player) => {

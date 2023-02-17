@@ -14,6 +14,7 @@ import PlayerList from './components/PlayerList';
 import StatisticsList from './components/StatisticsList';
 import StatisticListForFilters from './components/StatisticsListForFilters';
 import StatisticsFilter from './components/StatisticsFilter';
+import GamesList from './components/GamesList';
 
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
         </Routes>
         <Routes>
         <Route path="/statistics/:playerId" element={<StatisticsList />} />
+        </Routes>
+        <Routes>
+        <Route path="/games/:statisticId" element={<GamesList />} />
         </Routes>
       </Router>
       <ToastContainer />

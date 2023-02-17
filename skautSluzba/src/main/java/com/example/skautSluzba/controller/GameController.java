@@ -1,6 +1,7 @@
 package com.example.skautSluzba.controller;
 
 import com.example.skautSluzba.model.Game;
+import com.example.skautSluzba.model.Statistic;
 import com.example.skautSluzba.service.GameService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/games")
 public class GameController {
@@ -47,5 +49,10 @@ public class GameController {
     public ResponseEntity<Void> deleteGame(@PathVariable Long id) {
         gameService.deleteGame(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/statistics/{statisticId}/games")
+    public List<Game> getStatisticsByPlayerId(@PathVariable Long statisticId) {
+        return gameService.getGamesByStatisticId(statisticId);
     }
 }

@@ -49,7 +49,7 @@ function EditPlayerModal2({ onClose, onAdd, setPlayers, player, players }) {
             Cancel
           </button>
           <button className="add-btn" onClick={handleAddClick}>
-            Add
+            Edit
           </button>
         </div>
       </div>

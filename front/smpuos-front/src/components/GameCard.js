@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
+const GameCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleDelete = () => {
@@ -17,16 +16,15 @@ const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
   return (
     <div className="statistic-card">
       <div className="statistic-card-header" onClick={() => setShowDetails(!showDetails)}>
-        <h2>{`${statistic.season} - ${statistic.club}`}</h2>
+        <h2>{`${statistic.id}`}</h2>
         <div className="statistic-card-actions">
           <button className="edit-button" onClick={handleEdit}>Edit</button>
           <button className="delete-button" onClick={handleDelete}>Delete</button>
-          <Link to={`/games/${statistic.id}`}>View Games</Link>
         </div>
       </div>
       {showDetails && (
         <div className="statistic-card-details">
-          <p>Number of games: {statistic.numberOfGames}</p>
+          {/* <p>Number of games: {statistic.numberOfGames}</p> */}
           <p>Number of successful shots for 2 points: {statistic.numberOfSuccessfulShotsFor2Points}</p>
           <p>Number of attempted shots for 2 points: {statistic.numberOfAttemptedShotsFor2Points}</p>
           <p>Number of successful shots for 3 points: {statistic.numberOfSuccessfulShotsFor3Points}</p>
@@ -38,7 +36,7 @@ const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
           <p>Steals: {statistic.steals}</p>
           <p>Offensive rebounds: {statistic.offensiveRebounds}</p>
           <p>Defensive rebounds: {statistic.defensiveRebounds}</p>
-          <p>Rebounds: {statistic.rebounds}</p>
+          {/* <p>Rebounds: {statistic.rebounds}</p>
           <p>Points: {statistic.points}</p>
           <p>Average Steals: {statistic.averageStealsPerGame}</p>
           <p>Average offensive rebounds: {statistic.averageOffensiveReboundsPerGame}</p>
@@ -56,7 +54,7 @@ const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
           <p>Average percentageOfSuccessfulShotsFor2Points: {statistic.percentageOfSuccessfulShotsFor2Points}</p>
           <p>Average numberOfSuccessfulFreeThrows: {statistic.numberOfSuccessfulFreeThrows}</p>
           <p>Average numberOfAttemptedFreeThrows: {statistic.numberOfAttemptedFreeThrows}</p>
-          <p>Average percentageOfSuccessfulFreeThrows: {statistic.percentageOfSuccessfulFreeThrows}</p>
+          <p>Average percentageOfSuccessfulFreeThrows: {statistic.percentageOfSuccessfulFreeThrows}</p> */}
           {/* <div className="games-list">
             <h3>Games</h3>
             <ul>
@@ -71,4 +69,4 @@ const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
   );
 };
 
-export default StatisticCard;
+export default GameCard;

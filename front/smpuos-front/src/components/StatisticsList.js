@@ -175,6 +175,7 @@ const StatisticList = ({   onStatisticEdit }) => {
 
   const handleUpdate = (statistic) => {
     statisticService.update(statistic.id, statistic)
+    setShowEditModal(false)
   }
 
   const handleDelete = (statisticId) => {

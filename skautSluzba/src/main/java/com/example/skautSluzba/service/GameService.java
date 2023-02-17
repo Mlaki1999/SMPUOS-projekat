@@ -72,4 +72,8 @@ public class GameService {
         statisticRepository.save(game.getStatistic());//proveri ovo jel kreira novu ili apdejtuje
         gameRepository.deleteById(id);
     }
+
+    public List<Game> getGamesByStatisticId(Long statisticId) {
+        return gameRepository.findByStatisticId(statisticId);
+    }
 }

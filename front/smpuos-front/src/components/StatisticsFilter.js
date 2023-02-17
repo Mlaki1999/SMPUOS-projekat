@@ -248,13 +248,27 @@ export default function StatisticsFilter({  onFilter }) {
   const [minValues, setMinValues] = useState({
     assists: "",
     blocks: "",
-    steals: ""
+    steals: "",
+    numberOfGames: "",
+    numberOfAttemptedShotsFor2Points: "",
+    numberOfAttemptedShotsFor3Points: "",
+    percentageOfSuccessfulShotsFor2Points: "",
+    percentageOfSuccessfulShotsFor3Points: "",
+    percentageOfSuccessfulFreeThrows: "",
+    numberOfAttemptedFreeThrows: "",
+    pointsPerGame: "",
+    averageOffensiveReboundsPerGame: "",
+    averageDefensiveReboundsPerGame: "",
+    averageAssistsPerGame: "",
+    
+
   });
 
   const [maxValues, setMaxValues] = useState({
     assists: "",
     blocks: "",
-    steals: ""
+    steals: "",
+    averageTurnoversPerGame: ""
   });
 
   useEffect(()=>{
@@ -282,6 +296,20 @@ export default function StatisticsFilter({  onFilter }) {
         (maxValues.blocks === "" || item.blocks <= maxValues.blocks) &&
         (minValues.steals === "" || item.steals >= minValues.steals) &&
         (maxValues.steals === "" || item.steals <= maxValues.steals)
+        &&
+        (minValues.averageAssistsPerGame === "" || item.averageAssistsPerGame >= minValues.averageAssistsPerGame) &&
+        (maxValues.averageTurnoversPerGame === "" || item.averageTurnoversPerGame <= maxValues.averageTurnoversPerGame) &&
+        (minValues.averageDefensiveReboundsPerGame === "" || item.averageDefensiveReboundsPerGame >= minValues.averageDefensiveReboundsPerGame) &&
+        (minValues.averageOffensiveReboundsPerGame === "" || item.averageOffensiveReboundsPerGame >= minValues.averageOffensiveReboundsPerGame) &&
+        (minValues.percentageOfSuccessfulShotsFor2Points === "" || item.percentageOfSuccessfulShotsFor2Points >= minValues.percentageOfSuccessfulShotsFor2Points) &&
+        (minValues.percentageOfSuccessfulShotsFor3Points === "" || item.percentageOfSuccessfulShotsFor3Points >= minValues.percentageOfSuccessfulShotsFor3Points) &&
+        (minValues.percentageOfSuccessfulFreeThrows === "" || item.percentageOfSuccessfulFreeThrows >= minValues.percentageOfSuccessfulFreeThrows) &&
+        (minValues.numberOfAttemptedShotsFor2Points === "" || item.numberOfAttemptedShotsFor2Points >= minValues.numberOfAttemptedShotsFor2Points) &&
+        (minValues.numberOfAttemptedShotsFor3Points === "" || item.numberOfAttemptedShotsFor3Points >= minValues.numberOfAttemptedShotsFor3Points) &&
+        (minValues.numberOfAttemptedFreeThrows === "" || item.numberOfAttemptedFreeThrows >= minValues.numberOfAttemptedFreeThrows) &&
+        (minValues.numberOfGames === "" || item.numberOfGames >= minValues.numberOfGames)&&
+        (minValues.pointsPerGame === "" || item.pointsPerGame >= minValues.pointsPerGame)
+
     );
     setData(filteredData)
     console.log(data)
@@ -293,9 +321,10 @@ export default function StatisticsFilter({  onFilter }) {
   }
 
   return (
+    <div>
     <div className="filter-container">
       <h2>Filter Data</h2>
-      <div>
+      {/* <div>
         <label>Minimum assists:</label>
         <input
           type="number"
@@ -354,10 +383,121 @@ export default function StatisticsFilter({  onFilter }) {
             setMaxValues({ ...maxValues, steals: e.target.value })
           }
         />
+      </div> */}
+      <div>
+        <label>Maximum turnovers per game:</label>
+        <input
+          type="number"
+          value={maxValues.averageTurnoversPerGame}
+          onChange={e =>
+            setMaxValues({ ...maxValues, averageTurnoversPerGame: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum games played:</label>
+        <input
+          type="number"
+          value={minValues.numberOfGames}
+          onChange={e =>
+            setMinValues({ ...minValues, numberOfGames: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum PPG:</label>
+        <input
+          type="number"
+          value={minValues.pointsPerGame}
+          onChange={e =>
+            setMinValues({ ...minValues, pointsPerGame: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum 2P%:</label>
+        <input
+          type="number"
+          value={minValues.percentageOfSuccessfulShotsFor2Points}
+          onChange={e =>
+            setMinValues({ ...minValues, percentageOfSuccessfulShotsFor2Points: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum 3%:</label>
+        <input
+          type="number"
+          value={minValues.percentageOfSuccessfulShotsFor3Points}
+          onChange={e =>
+            setMinValues({ ...minValues, percentageOfSuccessfulShotsFor3Points: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum Attempts for 2:</label>
+        <input
+          type="number"
+          value={minValues.numberOfAttemptedShotsFor2Points}
+          onChange={e =>
+            setMinValues({ ...minValues, numberOfAttemptedShotsFor2Points: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum Attempts for 3:</label>
+        <input
+          type="number"
+          value={minValues.numberOfAttemptedShotsFor3Points}
+          onChange={e =>
+            setMinValues({ ...minValues, numberOfAttemptedShotsFor3Points: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum Attempts for FT:</label>
+        <input
+          type="number"
+          value={minValues.numberOfAttemptedFreeThrows}
+          onChange={e =>
+            setMinValues({ ...minValues, numberOfAttemptedFreeThrows: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum ORPG:</label>
+        <input
+          type="number"
+          value={minValues.averageOffensiveReboundsPerGame}
+          onChange={e =>
+            setMinValues({ ...minValues, averageOffensiveReboundsPerGame: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum DRPG%:</label>
+        <input
+          type="number"
+          value={minValues.averageDefensiveReboundsPerGame}
+          onChange={e =>
+            setMinValues({ ...minValues, averageDefensiveReboundsPerGame: e.target.value })
+          }
+        />
+      </div>
+      <div>
+        <label>Minimum APG:</label>
+        <input
+          type="number"
+          value={minValues.averageAssistsPerGame}
+          onChange={e =>
+            setMinValues({ ...minValues, averageAssistsPerGame: e.target.value })
+          }
+        />
       </div>
       <button onClick={handleFilter}>Filter</button>
-      <StatisticListForFilters statisticsFiltered={data} />
       <button onClick={report}>Generate</button>
+      </div>
+      <StatisticListForFilters statisticsFiltered={data} />
     </div>
   );
 }

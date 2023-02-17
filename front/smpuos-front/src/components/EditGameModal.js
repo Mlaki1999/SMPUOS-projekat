@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 
-function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd, playerId, onCancel }) {
+function EditGameModal({ onCancel ,statisticForUpdate, setShowEditModal, updateStatistic, onClose, onUpdate }) {
   const [newStatistic, setNewStatistic] = useState({
-    season: "",
-    club: "",
-    numberOfGames: 0,
-    numberOfSuccessfulShotsFor2Points: 0,
-    numberOfAttemptedShotsFor2Points: 0,
-    assists: 0,
-    blocks: 0,
-    personalFouls: 0,
-    turnovers: 0,
-    steals: 0,
-    numberOfSuccessfulShotsFor3Points: 0,
-    numberOfAttemptedShotsFor3Points: 0,
-    numberOfSuccessfulFreeThrows: 0,
-    numberOfAttemptedFreeThrows: 0,
-    player:{
-      id:playerId
+    ...statisticForUpdate,
+    numberOfSuccessfulShotsFor2Points: statisticForUpdate.numberOfSuccessfulShotsFor2Points ?? "",
+    numberOfAttemptedShotsFor2Points: statisticForUpdate.numberOfAttemptedShotsFor2Points ?? "",
+    assists: statisticForUpdate.assists ?? "",
+    blocks: statisticForUpdate.blocks ?? "",
+    personalFouls: statisticForUpdate.personalFouls ?? "",
+    turnovers: statisticForUpdate.turnovers ?? "",
+    steals: statisticForUpdate.steals ?? "",
+    numberOfSuccessfulShotsFor3Points: statisticForUpdate.numberOfSuccessfulShotsFor3Points ?? "",
+    numberOfAttemptedShotsFor3Points: statisticForUpdate.numberOfAttemptedShotsFor3Points ?? "",
+    numberOfSuccessfulFreeThrows: statisticForUpdate.numberOfSuccessfulFreeThrows ?? "",
+    numberOfAttemptedFreeThrows: statisticForUpdate.numberOfAttemptedFreeThrows ?? "",
+    statistic:{
+      id:statisticForUpdate.statistic.id
     },
-    offensiveRebounds: 0,
-    defensiveRebounds: 0,
+    offensiveRebounds: statisticForUpdate.offensiveRebounds ?? "",
+    defensiveRebounds: statisticForUpdate.defensiveRebounds ?? "",
+    games: [],
   });
 
   const handleChange = (event) => {
@@ -28,14 +27,18 @@ function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd, play
     setNewStatistic((prevStat) => ({ ...prevStat, [name]: value }));
   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   addStatistic(newStatistic);
-  //   setShowAddModal(false);
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const updatedStatistic = {
+      ...statisticForUpdate,
+      newStatistic
+    }
+    updateStatistic(newStatistic);
+    setShowEditModal(false);
+  };
 
-  const handleAddClick = () => {
-    onAdd(newStatistic);
+  const handleUpdateClick = () => {
+    onUpdate(newStatistic);
     console.log(newStatistic)
   }
 
@@ -44,20 +47,20 @@ function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd, play
     <div className="add-player-modal">
       <div className="add-player-modal-container">
       <div className="add-player-modal-content">
-        <h2>Add New Statistic</h2>
+        <h2>Update Game</h2>
         <form>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="season">Season:</label>
-            <input type="text" name="season" value={newStatistic.season} onChange={handleChange} />
+            <input type="text" id="season" value={newStatistic.season} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label htmlFor="club">Club:</label>
-            <input type="text" name="club" value={newStatistic.club} onChange={handleChange} />
+            <input type="text" id="club" value={newStatistic.club} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label htmlFor="numberOfGames">Number of Games:</label>
             <input type="text" name="numberOfGames" value={newStatistic.numberOfGames} onChange={handleChange}/>
-          </div>
+          </div> */}
           <div className="form-group">
             <label htmlFor="numberOfAttemptedShotsFor2Points">numberOfAttemptedShotsFor2Points:</label>
             <input type="text" name="numberOfAttemptedShotsFor2Points" value={newStatistic.numberOfAttemptedShotsFor2Points} onChange={handleChange}/>
@@ -119,119 +122,15 @@ function AddStatisticModal({ setShowAddModal, addStatistic, onClose, onAdd, play
           <button className="cancel-btn" onClick={onCancel}>
             Cancel
           </button>
-          <button className="add-btn" onClick={handleAddClick}>
-            Add
+          <button className="add-btn" onClick={handleUpdateClick}>
+            Update
           </button>
         </div>
       </div>
       </div>
     </div>
 
-
-
-
-    // <div className="add-statistic-modal">
-    //   <div className="add-statistic-modal-content">
-    //     <form onSubmit={handleSubmit}>
-    //       <h2>Add new statistic</h2>
-    //       <label>
-    //         Season:
-    //         <input
-    //           type="text"
-    //           name="season"
-    //           value={newStatistic.season}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Club:
-    //         <input
-    //           type="text"
-    //           name="club"
-    //           value={newStatistic.club}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Number of games:
-    //         <input
-    //           type="text"
-    //           name="numberOfGames"
-    //           value={newStatistic.numberOfGames}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Successful shots for 2 points:
-    //         <input
-    //           type="text"
-    //           name="numberOfSuccessfulShotsFor2Points"
-    //           value={newStatistic.numberOfSuccessfulShotsFor2Points}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Attempted shots for 2 points:
-    //         <input
-    //           type="text"
-    //           name="numberOfAttemptedShotsFor2Points"
-    //           value={newStatistic.numberOfAttemptedShotsFor2Points}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Assists:
-    //         <input
-    //           type="text"
-    //           name="assists"
-    //           value={newStatistic.assists}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Blocks:
-    //         <input
-    //           type="text"
-    //           name="blocks"
-    //           value={newStatistic.blocks}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Personal fouls:
-    //         <input
-    //           type="text"
-    //           name="personalFouls"
-    //           value={newStatistic.personalFouls}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Turnovers:
-    //         <input
-    //           type="text"
-    //           name="turnovers"
-    //           value={newStatistic.turnovers}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <label>
-    //         Steals:
-    //         <input
-    //           type="text"
-    //           name="steals"
-    //           value={newStatistic.steals}
-    //           onChange={handleChange}
-    //         />
-    //       </label>
-    //       <div className="modal-buttons">
-    //         <button type="submit">Add</button>
-    //         <button onClick={() => setShowAddModal(false)}>Cancel</button>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
   );
 }
 
-export default AddStatisticModal;
+export default EditGameModal;

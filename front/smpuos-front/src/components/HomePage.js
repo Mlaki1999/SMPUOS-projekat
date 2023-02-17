@@ -11,21 +11,41 @@ function HomePageUser() {
   };
 
   return (
-    <div className='home-page'>
+    // <div className='home-page'>
+    //   <div className="dropdown">
+    //     <button className="dropbtn">Menu</button>
+    //     <div className="dropdown-content">
+    //       <button onClick={() => handleMenuClick('/generate')}>Generate PDF</button>
+    //       <button onClick={() => handleMenuClick('/players')}>Players</button>
+    //       <button onClick={() => {
+    //         localStorage.removeItem('User');
+    //         handleMenuClick('/login');
+    //       }}>Logout</button>
+    //       <button onClick={() => handleMenuClick('/change-password')}>Change Password</button>
+    //     </div>
+    //     <h1>Welcome, {user.username}!</h1>
+    //   </div>
+    // </div>
+
+
+    <div className="home-page">
       <div className="dropdown">
         <button className="dropbtn">Menu</button>
         <div className="dropdown-content">
-          <button onClick={() => handleMenuClick('/statistics')}>Statistics</button>
           <button onClick={() => handleMenuClick('/players')}>Players</button>
-          <button onClick={() => {
+          <button onClick={() => handleMenuClick('/generate')}>Generate PDF</button>
+          <button href="#">Change Password</button>
+        </div>
+      </div>
+      <div className="welcome-message">
+        <h1>Welcome {user.username}!</h1>
+      </div>
+      <button className="logout" onClick={() => {
             localStorage.removeItem('User');
             handleMenuClick('/login');
           }}>Logout</button>
-          <button onClick={() => handleMenuClick('/change-password')}>Change Password</button>
-        </div>
-        <h1>Welcome, {user.username}!</h1>
-      </div>
     </div>
+
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditStatisticModal({ statisticForUpdate, setShowEditModal, updateStatistic, onClose, onUpdate }) {
+function EditStatisticModal({onCancel, statisticForUpdate, setShowEditModal, updateStatistic, onClose, onUpdate }) {
   const [newStatistic, setNewStatistic] = useState({
     ...statisticForUpdate,
     season: statisticForUpdate.season ?? "",
@@ -18,13 +18,14 @@ function EditStatisticModal({ statisticForUpdate, setShowEditModal, updateStatis
     numberOfSuccessfulFreeThrows: statisticForUpdate.numberOfSuccessfulFreeThrows ?? "",
     numberOfAttemptedFreeThrows: statisticForUpdate.numberOfAttemptedFreeThrows ?? "",
     player:{
-      id:1
+      id:statisticForUpdate.player.id
     },
     offensiveRebounds: statisticForUpdate.offensiveRebounds ?? "",
     defensiveRebounds: statisticForUpdate.defensiveRebounds ?? "",
     games: [],
   });
 
+  console.log(statisticForUpdate)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setNewStatistic((prevStat) => ({ ...prevStat, [name]: value }));
@@ -122,7 +123,7 @@ function EditStatisticModal({ statisticForUpdate, setShowEditModal, updateStatis
           </div> */}
         </form>
         <div className="button-group">
-          <button className="cancel-btn" onClick={onClose}>
+          <button className="cancel-btn" onClick={onCancel}>
             Cancel
           </button>
           <button className="add-btn" onClick={handleUpdateClick}>

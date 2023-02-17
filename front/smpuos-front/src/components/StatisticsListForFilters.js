@@ -135,6 +135,7 @@ import EditStatisticModal from './EditStatisticModal';
 import statisticService from '../services/StatisticService';
 import { useEffect  } from 'react';
 import { useParams } from 'react-router-dom';
+import StatisticCardFilter from './StatisticCardFilter';
 
 const StatisticListForFilters = ({ statisticsFiltered,  onStatisticEdit }) => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -163,8 +164,8 @@ const StatisticListForFilters = ({ statisticsFiltered,  onStatisticEdit }) => {
   };
 
   const filteredStatistics = statisticsFiltered.filter((statistic) =>
-    statistic.season.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    statistic.club.toLowerCase().includes(searchTerm.toLowerCase())
+    statistic.player.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    statistic.player.surname.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleAdd = (statistic) => {
@@ -185,12 +186,12 @@ const StatisticListForFilters = ({ statisticsFiltered,  onStatisticEdit }) => {
   return (
     <div className="statistic-list">
       <div className="search">
-        <input type="text" placeholder="Search by season or club" onChange={handleSearch} />
-        <button onClick={() => setShowAddModal(true)}>Add</button>
+        <input type="text" placeholder="Search by player" onChange={handleSearch} />
+        {/* <button onClick={() => setShowAddModal(true)}>Add</button> */}
       </div>
       <div className="statistic-cards">
         {filteredStatistics.map((statistic) => (
-          <StatisticCard
+          <StatisticCardFilter
             key={statistic.id}
             statistic={statistic}
             onStatisticDelete={handleDelete}

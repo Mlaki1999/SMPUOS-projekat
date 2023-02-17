@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
+const StatisticCardFilter = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleDelete = () => {
@@ -17,7 +17,7 @@ const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
   return (
     <div className="statistic-card">
       <div className="statistic-card-header" onClick={() => setShowDetails(!showDetails)}>
-        <h2>{`${statistic.season} - ${statistic.club}`}</h2>
+        <h2>{`${statistic.player.name} ${statistic.player.surname} -${statistic.season} - ${statistic.club}`}</h2>
         <div className="statistic-card-actions">
           <button className="edit-button" onClick={handleEdit}>Edit</button>
           <button className="delete-button" onClick={handleDelete}>Delete</button>
@@ -71,4 +71,4 @@ const StatisticCard = ({ statistic, onStatisticDelete, onStatisticEdit }) => {
   );
 };
 
-export default StatisticCard;
+export default StatisticCardFilter;
